@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTA DE PRODUTOS</span>
+                    <button class="btn btn-success float-end" routerLink="/insert-product">NOVO</button>
+                    <table *ngIf="productArray.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Produto</th>
+                            <th scope="col">category</th>
+                            <th scope="col">Pizzaria</th>
+                            <th scope="col">Preço</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let product of productArray">
+                            <th>{{ product.name }}</th>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.pizzaria }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>
+                                <i [routerLink]="['edit-product/', product._id]" class="fas fa-edit"></i>
+                                <i (click)="deletProduct(product._id)" class="fas fa-trash"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                <h5 *ngIf='productArray.length == 0' style='text-align: start; margin: top'>nenhum Produto cadastrado!</h5>      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
